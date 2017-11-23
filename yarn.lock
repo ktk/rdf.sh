@@ -16,17 +16,28 @@ ansi-styles@^3.1.0:
   dependencies:
     color-convert "^1.9.0"
 
+arch@^2.1.0:
+  version "2.1.0"
+  resolved "https://artifactory.eccenca.com/api/npm/npm/arch/-/arch-2.1.0.tgz#3613aa46149064b3c1f0607919bf1d4786e82889"
+
 camelcase@^4.1.0:
   version "4.1.0"
   resolved "https://artifactory.eccenca.com/api/npm/npm/camelcase/-/camelcase-4.1.0.tgz#d545635be1e33c542649c69173e5de6acfae34dd"
 
-chalk@^2.3.0:
+chalk@^2.0.1, chalk@^2.3.0:
   version "2.3.0"
   resolved "https://artifactory.eccenca.com/api/npm/npm/chalk/-/chalk-2.3.0.tgz#b5ea48efc9c1793dccc9b4767c93914d3f2d52ba"
   dependencies:
     ansi-styles "^3.1.0"
     escape-string-regexp "^1.0.5"
     supports-color "^4.0.0"
+
+clipboardy@^1.2.2:
+  version "1.2.2"
+  resolved "https://artifactory.eccenca.com/api/npm/npm/clipboardy/-/clipboardy-1.2.2.tgz#2ce320b9ed9be1514f79878b53ff9765420903e2"
+  dependencies:
+    arch "^2.1.0"
+    execa "^0.8.0"
 
 cliui@^3.2.0:
   version "3.2.0"
@@ -89,6 +100,18 @@ escape-string-regexp@^1.0.5:
 execa@^0.7.0:
   version "0.7.0"
   resolved "https://artifactory.eccenca.com/api/npm/npm/execa/-/execa-0.7.0.tgz#944becd34cc41ee32a63a9faf27ad5a65fc59777"
+  dependencies:
+    cross-spawn "^5.0.1"
+    get-stream "^3.0.0"
+    is-stream "^1.1.0"
+    npm-run-path "^2.0.0"
+    p-finally "^1.0.0"
+    signal-exit "^3.0.0"
+    strip-eof "^1.0.0"
+
+execa@^0.8.0:
+  version "0.8.0"
+  resolved "https://artifactory.eccenca.com/api/npm/npm/execa/-/execa-0.8.0.tgz#d8d76bbc1b55217ed190fd6dd49d3c774ecfc8da"
   dependencies:
     cross-spawn "^5.0.1"
     get-stream "^3.0.0"
@@ -162,6 +185,12 @@ locate-path@^2.0.0:
   dependencies:
     p-locate "^2.0.0"
     path-exists "^3.0.0"
+
+log-symbols@^2.1.0:
+  version "2.1.0"
+  resolved "https://artifactory.eccenca.com/api/npm/npm/log-symbols/-/log-symbols-2.1.0.tgz#f35fa60e278832b538dc4dddcbb478a45d3e3be6"
+  dependencies:
+    chalk "^2.0.1"
 
 lru-cache@^4.0.1:
   version "4.1.1"
