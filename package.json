@@ -1,0 +1,16 @@
+{
+  "name": "rdf.sh",
+  "version": "0.9.0",
+  "bin": {
+    "rdf2": "./index.js"
+  },
+  "description": "A command-line tool for doing Semantic Web / Linked Data jobs.",
+  "main": "index.js",
+  "repository": "git@github.com:seebi/rdf.sh.git",
+  "author": "Sebastian Tramp <mail@sebastian.tramp.name>",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "chalk": "^2.3.0",
+    "yargs": "^10.0.3"
+  }
+}
