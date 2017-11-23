@@ -1,23 +1,20 @@
 
-const yargs = require('yargs');
 const chalk = require('chalk');
 
-var argv = yargs
-  .commandDir('commands')
-  .count('verbose')
-  .alias('v', 'verbose')
-  .demandCommand()
-  .example('$0 ns skos', 'Get the typical namespace for the skos prefix')
-  .help()
-  .wrap(72)
+var VERBOSE_LEVEL = 0
 
+function init(argv) {
+    VERBOSE_LEVEL = argv.verbose
+}
+exports.init = init
 
-VERBOSE_LEVEL = 2
-function WARN() { VERBOSE_LEVEL >= 1 && console.error(chalk.bold.apply(null, arguments)); }
+function WARN() { console.error(chalk.bold.apply(null, arguments)); }
+function ERROR() { console.error(chalk.bold.red.apply(null, arguments)); }
+function INFO() { VERBOSE_LEVEL >= 1 && console.error(chalk.green.apply(null, arguments)); }
 function DEBUG() { VERBOSE_LEVEL >= 2 && console.error(chalk.dim.apply(null, arguments)); }
 
-exports.argv = argv
 exports.WARN = WARN;
+exports.ERROR = ERROR;
+exports.INFO = INFO;
 exports.DEBUG = DEBUG;
 
-argv.argv

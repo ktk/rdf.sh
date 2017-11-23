@@ -1,5 +1,13 @@
 #!/usr/bin/env node
 
-const common = require('./src/common');
+const yargs = require('yargs');
 
-// common.argv.argv
+var argv = yargs
+  .commandDir('src/commands')
+  .count('verbose')
+  .alias('v', 'verbose')
+  .demandCommand()
+  .example('$0 ns skos', 'Get the typical namespace for the skos prefix')
+  .help()
+  .wrap(72)
+  .argv
