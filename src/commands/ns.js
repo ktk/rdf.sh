@@ -1,25 +1,10 @@
 
-const common = require('../common');
-const clipboardy = require('clipboardy');
-
-exports.command = 'ns <prefixes..>'
-
-exports.desc = 'resolve prefixes and return namespace declarations'
-
-exports.builder = {
-  format: {
-    alias: 'f',
-    default: 'plain',
-    choices: ['plain', 'sparql', 'turtle', 'jsonld', 'json']
-  }
+exports.command = 'ns <command>'
+exports.desc = 'work with namespaces'
+exports.builder = function (yargs) {
+    return yargs
+        .commandDir('ns')
+        .example('$0 ns lookup foaf', 'Get the typical namespace for the foaf prefix from prefix.cc or from the cache')
+        .epilog('Fetched namespaces are cached and not fetched again. In addition to that, a prefix.local file is queried for local namespaces.')
 }
-
-exports.handler = function (argv) {
-    common.init(argv)
-    common.INFO('command ns called with prefixes', argv.prefixes, 'and format(s)', argv.format)
-
-    var result = 'this needs to be done'
-    common.OUT(result)
-    clipboardy.writeSync(result);
-    common.WARN('command ns finished')
-}
+exports.handler = function (argv) {}

@@ -14,11 +14,11 @@ testDataPlatformImportExportAndDiff()   {
     RDFSH_TOKEN=$(curl -s -S -X POST -u "${DP_CLIENTNAME:-}":"${DP_CLIENTPASS:-}" "$authUrl" -d "password=${DP_PASSWORD:-}&username=${DP_USER:-}&grant_type=password" | jq -r '.access_token')
     export RDFSH_TOKEN
     assertNotNull "TOKEN not extracted" "${RDFSH_TOKEN}"
-    assertEquals '200 OK' "$(../rdf gsp-delete "$graph" "$store")"
-    assertEquals "200 OK" "$(../rdf gsp-put "$graph" "$input" "$store")"
-     ../rdf gsp-get "$graph" "$store" >"$output"
-    assertEquals "" "$(../rdf diff "$output" "$input")"
-    assertEquals "200 OK" "$(../rdf gsp-delete "$graph" "$store")"
+    assertEquals '200 OK' "$(../rdf gsp delete "$graph" "$store")"
+    assertEquals "200 OK" "$(../rdf gsp put "$graph" "$input" "$store")"
+     ../rdf gsp get "$graph" "$store" >"$output"
+    assertEquals "" "$(../rdf file diff "$output" "$input")"
+    assertEquals "200 OK" "$(../rdf gsp delete "$graph" "$store")"
     rm -f "$output"
     unset RDFSH_TOKEN
 }
@@ -37,11 +37,11 @@ testDydraImportExportAndDiff()   {
     if [ "${DYDRA_PASSWORD:-}" != "" ]; then
         export RDFSH_PASSWORD="${DYDRA_PASSWORD}"
     fi
-    assertEquals "404 Not Found" "$(../rdf gsp-delete "$graph" "$store")"
-    assertEquals "200 OK" "$(../rdf gsp-put "$graph" "$input" "$store")"
-    ../rdf gsp-get "$graph" "$store" >"$output"
-    assertEquals "" "$(../rdf diff "$output" "$input")"
-    assertEquals "200 OK" "$(../rdf gsp-delete "$graph" "$store")"
+    assertEquals "404 Not Found" "$(../rdf gsp delete "$graph" "$store")"
+    assertEquals "200 OK" "$(../rdf gsp put "$graph" "$input" "$store")"
+    ../rdf gsp get "$graph" "$store" >"$output"
+    assertEquals "" "$(../rdf file diff "$output" "$input")"
+    assertEquals "200 OK" "$(../rdf gsp delete "$graph" "$store")"
     rm -f "$output"
 }
 
