@@ -10,8 +10,11 @@ if (yargs.terminalWidth() > 90) {
 
 var argv = yargs
     .commandDir('src/commands')
+    .option('verbose',{
+        alias: 'v',
+        describe: 'output verbose messages on internal operations'
+    })
     .count('verbose')
-    .alias('v', 'verbose')
     .demandCommand()
     .completion()
     .epilog('More infos at https://github.com/seebi/rdf.sh')

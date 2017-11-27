@@ -2,8 +2,22 @@
 const common = require('../../common')
 
 exports.command = 'skolemize <file> [namespace]'
-exports.desc = 'Not a real skolemization but materialises bnodes as IRIs and outputs the file turtleized. The second parameter is an optional namespace IRI.'
+exports.desc = 'Materialises bnodes as IRIs'
 exports.handler = skolemizeCommand
+exports.builder = function (yargs) {
+    return yargs
+        .positional(
+            'file', {
+                describe: 'document to split, can be an URL',
+                coerce: common.checkFileQnameUrl,
+                type: 'string'
+            })
+        .positional(
+            'namespace', {
+                describe: 'optional namespace prefix for the minted bnode IRIs',
+                type: 'string'
+            })
+}
 
 function skolemizeCommand (argv) {
     common.init(argv)

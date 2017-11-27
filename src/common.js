@@ -4,6 +4,8 @@ var chalk = require('chalk');
 var logSymbols = require('log-symbols');
 var path = require('path');
 var fs = require('fs');
+var isWebUri = require('valid-url').isWebUri
+var process = require('process');
 var exec = require('child_process').exec;
 var stdout = require('process').stdout;
 
@@ -15,6 +17,7 @@ const version = require('../package.json').version;
 exports.version = version
 
 var VERBOSE_LEVEL = 0
+
 
 function OUT(output) { console.log(output) }
 exports.OUT = OUT;
@@ -74,6 +77,16 @@ function execLegacy(legacyCommand) {
     });
 }
 exports.execLegacy = execLegacy;
+
+function checkFileQnameUrl(string) {
+    if(!fs.existsSync(string) && !isWebUri(string)) {
+        ERROR(string, 'is neither a file nor a valid web URL')
+        process.exit(1)
+    } else {
+        return string
+    }
+}
+exports.checkFileQnameUrl = checkFileQnameUrl
 
 function init(argv) {
     VERBOSE_LEVEL = argv.verbose

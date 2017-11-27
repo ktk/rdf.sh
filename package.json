@@ -4,7 +4,7 @@
   "bin": {
     "rdf": "./rdf"
   },
- "files": [
+  "files": [
     "rdf-legacy.bash",
     "README.md",
     "CHANGELOG.md",
@@ -14,9 +14,9 @@
   "main": "index.js",
   "repository": "git@github.com:seebi/rdf.sh.git",
   "author": {
-      "name": "Sebastian Tramp",
-      "email": "mail@sebastian.tramp.name",
-      "url": "https://sebastian.tramp.name"
+    "name": "Sebastian Tramp",
+    "email": "mail@sebastian.tramp.name",
+    "url": "https://sebastian.tramp.name"
   },
   "homepage": "https://github.com/seebi/rdf.sh",
   "license": "GPL-3.0",
@@ -28,6 +28,7 @@
     "log-symbols": "^2.1.0",
     "request": "^2.83.0",
     "request-promise": "^4.2.2",
+    "valid-url": "^1.0.9",
     "yargs": "^10.0.3"
   }
 }
