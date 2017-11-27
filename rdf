@@ -9,14 +9,15 @@ if (yargs.terminalWidth() > 90) {
 }
 
 var argv = yargs
-  .commandDir('src/commands')
-  .count('verbose')
-  .alias('v', 'verbose')
-  .demandCommand()
-  .epilog('More infos at https://github.com/seebi/rdf.sh')
-  .example('$0 ns lookup foaf', 'Get the typical namespace for the foaf prefix from prefix.cc or from the cache')
-  .example('$0 resource list foaf:', 'List all subject in the document fetched from the foaf namespace')
-  .example('$0 resource desc foaf:Person', 'Describe the Person class in the FOAF vocabulary')
-  .help()
-  .wrap(wrap)
-  .argv
+    .commandDir('src/commands')
+    .count('verbose')
+    .alias('v', 'verbose')
+    .demandCommand()
+    .completion()
+    .epilog('More infos at https://github.com/seebi/rdf.sh')
+    .example('$0 ns lookup foaf', 'Get the typical namespace for the foaf prefix from prefix.cc or from the cache')
+    .example('$0 resource list foaf:', 'List all subject in the document fetched from the foaf namespace')
+    .example('$0 resource desc foaf:Person', 'Describe the Person class in the FOAF vocabulary')
+    .help()
+    .wrap(wrap)
+    .argv
