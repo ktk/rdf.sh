@@ -1045,9 +1045,12 @@ do_turtleize ()
         exit 1
     fi
 
-    features=$(_getFeatures "$file")
+    tmpInput="/tmp/$RANDOM-$(basename "$file")"
+    rapper -i guess -o ntriples "$file" 2> /dev/null | sort -u >"$tmpInput" || true
+    features=$(_getFeatures "$tmpInput")
     # shellcheck disable=SC2086
-    rapper -q ${features} -i guess -o turtle "$file" 2>/dev/null || true
+    rapper -q ${features} -i guess -o turtle "$tmpInput" 2>/dev/null || true
+    rm -f "$tmpInput"
 }
 
 docu_skolemize() { echo "Not a real skolemization but materialises bnodes as IRIs and outputs the file turtleized. The second parameter is an optional namespace IRI."; }
