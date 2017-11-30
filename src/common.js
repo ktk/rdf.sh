@@ -63,7 +63,7 @@ function execLegacy(legacyCommand) {
     exec(command, (error, commandOutput, commandErrorOutput) => {
         if (error) {
             ERROR('Execution of wrapped command "', legacyCommand, '" went wrong.')
-            console.log(err);
+            console.log(error);
             return;
         }
 
